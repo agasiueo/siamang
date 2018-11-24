@@ -43,8 +43,43 @@ class Acara extends CI_Controller{
 		redirect('home');
 	}
 
-	
+	function hapusAcara(){
+		$id_acara = $_GET['id_acara'];
+		$this->m_acara->hapusAcara($id_acara);
+		redirect('home');
+		
+	}
 
-	
+	function editAcara(){
+		$id_acara = $_GET['id_acara'];
+		$nama_acara = $this->input->post('nama_acara');
+		$gs = $this->input->post('gs');
+		$genre = $this->input->post('genre');
+		$lokasi = $this->input->post('lokasi');
+		$harga = $this->input->post('harga');
+		$tanggal = $this->input->post('tanggal');
+		$deskripsi = $this->input->post('deskripsi');
+		$rating = $this->input->post('rating');
+		
+		
+		$data = array(
+			'nama_acara' => $nama_acara,
+			'gs' => $gs,
+			'genre' => $genre,
+			'lokasi' => $lokasi,
+			'harga' => $harga,
+			'tanggal' => $tanggal,
+			'deskripsi' => $deskripsi,
+			'rating' => $rating,
+		
+		);
+
+		$where = array(
+			'id_acara' => $id_acara
+		);
+
+		$this->m_acara->editAcara($where,$data,'acara');
+		redirect('acara?id_acara='.$id_acara);
+	}
 
 }

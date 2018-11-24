@@ -99,6 +99,142 @@
 </div>
 
  
+
+<div class="tambah">
+  <?php if(isset($_SESSION['id_admin'])){ ?> 
+  <a href="#modalEdit" class="btn btn-primary pull-right tombol" 
+  data-id_acara="<?php echo $acara_key->id_acara; ?>" 
+  data-nama_acara="<?php echo $acara_key->nama_acara; ?>"  
+  data-rating="<?php echo $acara_key->rating; ?>"
+  data-lokasi="<?php echo $acara_key->lokasi; ?>"
+  data-gambar="<?php echo $acara_key->gambar; ?>"
+  data-deskripsi="<?php echo $acara_key->deskripsi; ?>"
+  data-tanggal="<?php echo $acara_key->tanggal; ?>"
+  data-genre="<?php echo $acara_key->genre; ?>"
+  data-gs="<?php echo $acara_key->gs; ?>"
+  data-harga="<?php echo $acara_key->harga; ?>"
+  data-toggle="modal">Edit Acara</a>
+  <a href="#modalHapus" class="btn btn-danger pull-right tombol" data-toggle="modal">Hapus</a> 
+  <?php }?>
+</div>
+
+<!-- Modal genre -->
+<div class="modal fade" id="modalGenre" role="dialog">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form role="form" action="/Siamang/pencarian/pencarianGenre" method="post">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Tutup"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Pilih Genre</h4>
+         </div>
+         <div class="modal-body">
+            <input type="radio" name="genre" value="pop"> Pop<br>
+            <input type="radio" name="genre" value="jazz"> Jazz<br>
+            <input type="radio" name="genre" value="dangdut"> Dangdut<br>
+         </div>
+      <div class="modal-footer">
+     <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+     <button class="btn btn-primary" type="submit">OK</button>
+     </div>
+  </div>
+    </form>
+</div>
+</div>
+
+<!-- Modal lokasi -->
+<div class="modal fade" id="modalLokasi" role="dialog">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form role="form" action="/Siamang/pencarian/pencarianLokasi" method="post">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Tutup"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Pilih Lokasi</h4>
+         </div>
+         <div class="modal-body">
+             <input type="radio" name="lokasi" value="UMM DOME"> UMM DOME<br>
+            <input type="radio" name="lokasi" value="GRAHA CAKRAWALA"> Graha Cakrawala<br>
+            <input type="radio" name="lokasi" value="LEMBAH DIENG"> Lembah Dieng<br>
+         </div>
+      <div class="modal-footer">
+     <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+     <button class="btn btn-primary" type="submit">OK</button>
+     </div>
+  </div>
+    </form>
+</div>
+</div>
+ 
+<!-- Modal edit acara -->
+<div class="modal fade" id="modalEdit" role="dialog">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <?php foreach ($acara as $acara_key) {?>
+        <form role="form" action="acara/editAcara?id_acara=<?php echo $acara_key->id_acara;?>" method="post" class="form-group">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Tutup"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Masukkan Data</h4>
+
+         </div>
+         <div class="modal-body">
+            <label>Nama acara :</label><input type="text" name="nama_acara" class="form-control nama_acara" placeholder="Nama acara" required autofocus><br>
+            <label>Guest Star :</label><input type="text" name="gs" class="form-control gs" placeholder="Guest Star" required autofocus> <br>
+             <label>Genre :</label>
+            <select name="genre" class="form-control genre" required autofocus >
+            <option disabled selected>-Pilih-</option>
+          <option value="pop">Pop</option>
+          <option value="jazz">Jazz</option>
+          <option value="dangdut">Dangdut</option>
+      </select><br>
+            <label>Lokasi :</label>
+            <select name="lokasi" class="form-control lokasi" required autofocus>
+            <option disabled selected>-Pilih-</option>
+          <option value="UMM DOME">UMM DOME</option>
+          <option value="GRAHA CAKRAWALA">GRAHA CAKRAWALA</option>
+          <option value="LEMBAH DIENG">LEMBAH DIENG</option>
+      </select><br>
+            <label>Harga :</label><input type="text" name="harga" class="form-control harga" placeholder="Harga" required autofocus> <br>
+            <label>Tanggal :</label><input type="date" name="tanggal" class="form-control tanggal" placeholder="Tanggal" required autofocus><br>
+            <label>Deskripsi :</label><input type="text" name="deskripsi" class="form-control deskripsi" placeholder="Deskripsi acara" required autofocus><br>
+            <label>Rating</label><input type="text" name="rating" class="form-control rating" placeholder="Rating acara" required autofocus><br>
+            
+         </div>
+      <div class="modal-footer">
+     <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+     <button class="btn btn-primary" type="submit">OK</button>
+     </div>
+  </div>
+    </form>
+</div>
+</div>
+<?php } ?>
+
+<!-- Modal Hapus acara -->
+<div class="modal fade" id="modalHapus" role="dialog">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <?php foreach ($acara as $acara_key) {?>
+        <form role="form" action="acara/hapusAcara?id_acara=<?php echo $acara_key->id_acara;?>" method="post">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Tutup"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Hapus Acara</h4>
+         </div>
+         <div class="modal-body">
+            Apakah anda yakin ingin menghapus Acara ini?
+         </div>
+      <div class="modal-footer">
+     <input class="id_laporan form-control" type="hidden" name="id_laporan">
+     <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+     <button class="btn btn-primary">OK</button>
+     <?php } ?>
+     
+
+     </div>
+  </div>
+    </form>
+</div>
+</div>
+</div>
+
 <script>
 $('.tombol').on("click", function(e){
 
