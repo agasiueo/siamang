@@ -6,13 +6,13 @@ class Acara extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		$this->load->model('m_acara');
-	
+		$this->load->model('m_komentar');
 	}
 
 	function index(){
 		$id_acara = $_GET['id_acara'];
 		$data['acara'] = $this->m_acara->tampilAcara($id_acara)->result();
-		
+		$data['komentar'] = $this->m_komentar->tampilKomentar($id_acara)->result();
 		$this->load->view('v_acara', $data);
 	}
 

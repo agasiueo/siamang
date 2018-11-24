@@ -38,6 +38,8 @@
                                     <div class="dropdown">
                                       <button class="dropbtn active">Pencarian</button>
                                       <div class="dropdown-content">
+                                        <a href="#modalLokasi" data-toggle="modal">Lokasi</a>
+                                        <a href="#modalGenre" data-toggle="modal">Genre</a>
                                         <a href="/Siamang/pencarian/limateratas">5 Teratas</a>
                                       </div>
                                     </div>  <?php } ?>
@@ -147,6 +149,53 @@
     </form>
 </div>
 </div>
+
+<!-- Modal genre -->
+<div class="modal fade" id="modalGenre" role="dialog">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form role="form" action="/Siamang/pencarian/pencarianGenre" method="post">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Tutup"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Pilih Genre</h4>
+         </div>
+         <div class="modal-body">
+            <input type="radio" name="genre" value="pop"> Pop<br>
+            <input type="radio" name="genre" value="jazz"> Jazz<br>
+            <input type="radio" name="genre" value="dangdut"> Dangdut<br>
+         </div>
+      <div class="modal-footer">
+     <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+     <button class="btn btn-primary" type="submit">OK</button>
+     </div>
+  </div>
+    </form>
+</div>
+</div>
+
+<!-- Modal lokasi -->
+<div class="modal fade" id="modalLokasi" role="dialog">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form role="form" action="/Siamang/pencarian/pencarianLokasi" method="post">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Tutup"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Pilih Lokasi</h4>
+         </div>
+         <div class="modal-body">
+             <input type="radio" name="lokasi" value="UMM DOME"> UMM DOME<br>
+            <input type="radio" name="lokasi" value="GRAHA CAKRAWALA"> Graha Cakrawala<br>
+            <input type="radio" name="lokasi" value="LEMBAH DIENG"> Lembah Dieng<br>
+         </div>
+      <div class="modal-footer">
+     <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+     <button class="btn btn-primary" type="submit">OK</button>
+     </div>
+  </div>
+    </form>
+</div>
+</div>
+<!--educate logos end here-->
 
 </div>
 <style>
